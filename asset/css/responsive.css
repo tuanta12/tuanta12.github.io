@@ -1,5 +1,5 @@
 /* pc */
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
     #header .mobile-menu {
         display: none;
     }
@@ -7,7 +7,7 @@
 /* tablet and mobile */
 /* cố gắng tạo nút bấm có độ lớn 42px trở lên do trên đt 
 với tanlet nút bấm nó nhỏ  */
-@media (max-width: 1023px) {
+@media (max-width: 63.9375em) {
     .btn {
         padding: 15px 16px;
     }
@@ -29,11 +29,11 @@ với tanlet nút bấm nó nhỏ  */
     }
 }
 /* tablet */
-@media (min-width: 740px) and (max-width: 1023px) {
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
     
 }
 /* mobile */
-@media (max-width: 740px) {
+@media (max-width: 739px) {
     .s-full-width,
     .s-col-full {
         width: 100%!important;
