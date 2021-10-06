@@ -1,0 +1,474 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* common */
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+    /* hành vi khi cuộn làm cho nhấn vào band,tour,contact nó chuyển tới vị trí khác mượt hơn. */
+}
+.clear {
+    clear: both;
+    /* thẻ này giúp khắc phục thẻ cha member list không ôm 3 thẻ con, do có thuộc tính float */
+}
+.text-white {
+    color:#fff !important;
+    /* thẻ này nghĩa là sau này trong trang của mình có đoạn text nào trong trang của mình có màu khác thì mình thêm cái class này vô sẽ có màu trắng */
+}
+.text-center {
+    text-align: center !important;
+}
+/* những thẻ làm duy nhất 1 thuộc tính chung nên có importan để  */
+.mt-8 {
+    margin-top: 8px !important;
+}
+.mt-16 {
+    margin-top: 16px !important;
+}
+/* những số chia hết cho 4 mới nên đưa vào làm biến chung */
+.row {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+/* để tránh tạo nhiều thẻ clear nên xư lý bằng cách tạo ra thằng Pseudo elements */
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.col {
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.col-full {
+    width: 100%;
+}
+.col-half {
+    width: 50%;
+}
+.col-third {
+    width: 33.33333%;
+}
+.pull-right {
+    float: right !important;
+}
+.btn{
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: inline-block; 
+    /* do khi một thẻ dạng khối nằm gần một thẻ dạng inline-block 
+    khi padding sẽ xảy ra hiện tượng nó nằm lên thẻ trên chứ không đẩy lên nên phải thêm thẻ inline-block */
+    margin-top: 15px;
+    border: none;
+    text-align: center;
+}
+.btn:hover {
+    color: #000;
+    background-color: #757575;
+    cursor: pointer;
+}
+/* main */
+#main{
+
+}
+#nav{
+    display: inline-block;
+    /* vì header đang chiếm hết header dùng thẻ này để cho nó chỉ tới more để đẩy thằng search lên */
+}
+#nav > li {
+    display: inline-block;
+}
+#nav li {
+    position: relative; 
+}
+#nav .subnav {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 20%);
+}
+#nav li:hover .subnav {
+    display: block;
+}
+#nav, .subnav {
+    list-style-type: none;
+}
+#nav .subnav a {
+    color:#000;
+    padding: 0 16px;
+}
+#nav li a {
+    text-decoration: none;
+    line-height: 46px;
+    padding: 0 24px;
+   
+}
+#nav > li > a {
+    text-transform: uppercase;
+    color: #fff;
+}
+#nav > li:hover > a {
+    color: #000;
+    background-color: #ccc;
+    display: inline-block;
+}
+#nav .subnav li:hover a {
+    color: #000;
+    background-color: #ccc;
+    display: block;
+}
+#header{ 
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    height: 46px;
+    background-color: #000;
+    z-index: 1;
+    /* Phần tử có thứ tự ngăn xếp lớn hơn luôn đứng trước phần tử có thứ tự ngăn xếp thấp hơn.
+    Lưu ý: z-index chỉ hoạt động trên các phần tử được định vị (vị trí: tuyệt đối, vị trí: tương đối, vị trí: cố định hoặc vị trí: dính) và các mục flex (phần tử là con trực tiếp của phần tử hiển thị: flex).
+    Nếu hai phần tử được định vị trùng nhau mà không chỉ định z-index, phần tử được định vị cuối cùng trong mã HTML sẽ được hiển thị ở trên cùng. */
+}
+#nav li .arrow-down {
+    color: #fff;
+    font-size: 14px;
+}
+#nav li:hover .arrow-down {
+    color: #000;
+    background-color: #ccc;
+}
+#header .mobile-menu,
+#header .search {
+    float: right;
+    line-height: 46px;
+    padding: 0 24px;   
+}
+#header .mobile-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    }
+#header .menu-icon,
+#header .tsearch {
+    font-size: 16px;
+    color: #fff; 
+}
+#header .search:hover  {
+    color: #fff;
+    background-color: #f44336;
+    cursor: pointer;
+}
+#header .mobile-menu:hover {
+    background-color: #ccc;
+}
+#header .mobile-menu:hover .menu-icon {
+    color: #000;
+}
+#slider{
+    position: relative;
+    margin-top: 46px; 
+    padding-top: 50%;
+    /* padding-top:  klhi thêm giá trị value % là phần trăm chiều ngang của chính nó nghĩa là 50% của chiều ngang*/
+    background: url(/asset/css/img/slider/newyork.jpg) top center / cover no-repeat; 
+}
+#slider .text-content{
+    position: absolute;
+    bottom: 47px;
+    color: #fff;
+    /* cách 1 để căn giữa:
+    left: 50%;
+    transform: translateX(-50%); */
+    width: 100%;
+    text-align: center;
+    
+}
+
+#slider .text-heading{
+    font-weight: 500;
+    font-size: 24px;
+    /* giam độ dày giá trị giao độngtừ 100-700 */
+     
+}
+
+#slider .text-description{
+    margin-top: 25px; 
+} 
+
+#content{
+
+}
+#content .content-section {
+    width: 800px;
+    max-width: 100%;
+    padding: 64px 0 112px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    /* padding 2 bên để chữa lỗi khoảng trống do thằng row nó margin -8px 
+    có thẻ css cho thẻ cha #main: hiden là để cho tất cả thằng con thằng nào chui ra ngoài tạo khoảng trắng thì fit mất khoảng trắng*/
+}
+#content .section-heading {
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 4px;
+    /* tạo khoảng cách giữa các ký tự */
+    font-weight: 400;
+
+}
+#content .section-sub-heading {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 25px;
+    font-style: italic;
+    opacity: 0.6;
+    /* độ trong suốt */
+}
+#content .about-text {
+    margin-top: 25px;
+    text-align: justify;
+    /* căn lề trong đoạn văn, câu văn */
+    line-height: 1.4;
+    /* này là khoảng cách giữa 2 dòng với nhau */
+}
+#content .member-list {
+    margin-top: 48px;
+    /* overflow: hidden; */
+   
+}
+/* #content .member-item {
+     /* để cho 3 ảnh nằm ngang phải đủ 100% có hai cách */
+    /* width: 33.33333%;
+    cách 2 */
+    /* text-align: center; */
+#content .member-name {
+    font-size: 15px;
+}
+#content .member-img {
+    margin-top: 15px;
+    width: 147px;
+    /* ảnh thì nếu đặt width thì không cần đặt height, vì nó tự động tỷ lệ */
+     border-radius: 4px;
+     /* bo tròn góc của ảnh */
+}
+/* tour-section */
+#content .tour-section {
+    background-color: #000;
+    
+}
+.tickets-list {
+    background-color: #fff;
+    margin-top: 40px;
+}
+.tickets-list li {
+    font-size: 15px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #ddd;
+    color: #757575;
+    list-style-type: none;
+}
+.tickets-list .sold-out {
+    background-color: #f44336;
+    color: #fff;
+    margin-left: 16px;
+    padding: 3px 8px;
+}
+.tickets-list .quanlity {
+    float: right;
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border-radius: 50%;
+    line-height: 24px;
+    text-align: center;
+    
+}
+/* place */
+.place-list {
+    margin-top: 16px;
+    margin-bottom: 48px;
+        /* margin-left: -8px;
+    margin-right: -8px;   */
+    /* padding-bottom: 48px; */
+}
+
+
+    /* khi làm như vậy thì viền của hai ảnh cuối bị thụt vào không bằng với ticket-list 
+    cách xử lý là cho margin âm left và right*/
+
+
+.place-img {
+    width: 100%;
+    /* Khi cho thuộc tính này thì nó sẽ bằng thuộc tính của thẻ chứa nó là place-items ảnh sẽ đúng kích thước đó*/
+    display: block;
+    /* do hinh ảnh và chữ cách nhau một khoảng màu đen nguyên nhân do có 1 phần tử có display-inline đứng cạnh block */
+}
+.place-img:hover {
+    opacity: 0.5;
+}
+
+.place-body{
+    padding: 15px 16px 16px;
+    font-size: 15px;
+    /* do thẻ h không có tính kế thừa nên nó kh có theo font-size:15 phải xử lý riêng nó*/
+    background-color: #fff;
+}
+
+.place-heading{
+    font-size: 15px;
+    font-weight: 700;
+
+}
+
+.place-time{
+    margin-top: 15px;
+    color: #757575;
+}
+
+.place-description{
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+
+/*contact-form*/
+.contact-content {
+    margin-top: 48px;
+}
+.contact-infor {
+    font-size: 18px;
+    line-height: 1.4;
+    /* dao động từ 1.4 ->1.6 */
+}
+.contact-form {
+    font-size: 15px;
+}
+.contact-form .form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+/* ý nghĩa của class này là css những thằng chứa ti- là 3 thằng icon*/
+.contact-infor i[class*="ti-"] {
+    width: 30px;
+    display: inline-block;
+}
+.contact-infor a {
+    color: #0082f5;
+    opacity: 0.6;
+}
+.contact-infor a:hover {
+    opacity: 0.9;
+}
+/* footer section */
+#footer {
+    padding: 64px 16px;
+    text-align: center;
+    opacity: 0.6;
+}
+#footer .socials-list {
+    font-size: 24px;
+}
+#footer .socials-list a {
+    text-decoration: none;
+    color: #000;
+}
+#footer .footer-text a:hover,
+#footer .socials-list a:hover {
+    opacity: 0.4;
+}
+.footer-text {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #000
+}
+#footer .footer-link {
+    color: #000;   
+}
+/* tạo modal  là làm lớp phủ lên làm bước này trước để coi*/
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.modal-container {
+    position: relative;
+    width: 900px;
+    min-height: 300px;
+    background-color: #fff;
+    max-width: calc(100%-32px);
+    /* thêm thuộc tính này sẽ giúp modal không dính viền trang wed khi thu nhỏ lại   */
+}
+.modal-header {
+    height: 130px;
+    padding: 32px 16px;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background-color: #009688;
+    color: #fff;
+}
+/* .modal-bag {
+    margin-right: 16px;
+}
+.modal-close:hover {
+    color: #000;
+    background-color: #ccc;
+}
+.modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 8px 16px;
+    color: #fff;
+    cursor: pointer;
+}
+.modal-body {
+    padding: 16px;
+}
+.modal-lable {
+    display: block;
+    margin-bottom: 14px;
+}
+.modal-input {
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    margin-bottom: 24px;
+}
+#buy-tickets:hover {
+    opacity: 0.8;
+}
+#buy-tickets {
+    background-color: #009688;
+    border: none;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 18px;
+    cursor: pointer;
+}
+.modal-footer {
+    margin: 15px 0;
+    text-align: right;
+}
+.modal-footer a {
+    color: #2196F3;
+} */
